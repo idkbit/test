@@ -21,7 +21,8 @@ $spacingDesktop: 75px;
 $spacingMobile: 10px;
 
 .btn {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	color: $clr-white;
 	background-color: $clr-red-primary;
 	border-radius: 30px;

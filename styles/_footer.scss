@@ -29,6 +29,9 @@
 	}
 	&__address {
 		margin-bottom: 10px;
+		&-container {
+			max-width: 350px;
+		}
 		&-link {
 			color: $clr-white;
 			&:hover {
@@ -49,5 +52,10 @@
 		padding-top: 18px;
 		padding-bottom: 20px;
 		margin: 0 $spacingDesktop;
+		&-container {
+			display: flex;
+			gap: 27px;
+			justify-content: space-between;
+		}
 	}
 }

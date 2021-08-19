@@ -25,15 +25,20 @@
 		border: 1px solid #c2d1d9;
 		&-description {
 			text-align: center;
+			margin-top: 18px;
 		}
 		&-name {
 			font-size: 1.125rem;
 			color: $clr-black-primary;
 			margin-bottom: 15px;
+			font-weight: 700;
+			line-height: 31px;
 		}
 		&-text {
 			font-size: 0.875rem;
 			color: $clr-black-tertiary;
+			margin: 0 15px 40px;
+			text-align: center;
 		}
 	}
 }

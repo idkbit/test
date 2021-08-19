@@ -1,5 +1,4 @@
 .pricing {
-	padding: 87px $spacingDesktop 120px;
 	text-align: center;
 	&__heading {
 		font-family: $font-oswald;
@@ -45,4 +44,8 @@
 			font-weight: 700;
 		}
 	}
+}
+
+.container {
+	margin: 87px $spacingDesktop 120px;
 }
