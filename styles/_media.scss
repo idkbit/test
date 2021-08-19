@@ -1,0 +1,202 @@
+@media screen and (max-width: 1230px) {
+	.legalization {
+		&__cards-container {
+			flex-direction: column;
+		}
+	}
+	.card {
+		max-width: 384px;
+		margin: 0 auto 15px;
+		transform: translateY(15px);
+	}
+	.pricing {
+		&__card {
+			max-width: 384px;
+			margin: 0 auto 15px;
+			&-container {
+				flex-direction: column;
+			}
+		}
+	}
+	.team {
+		&__container {
+			grid-template-columns: repeat(2, 1fr);
+			row-gap: 15px;
+			column-gap: 5px;
+			@media screen and (max-width: 665px) {
+				grid-template-columns: 1fr;
+				place-items: center;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 990px) {
+	.header {
+		flex-direction: column;
+		&__logo {
+			margin-left: 10px;
+		}
+		&__contacts {
+			justify-content: center;
+			margin: 0 auto 0 10px;
+		}
+		.navbar {
+			margin: 0 auto 0 10px;
+			&__list {
+				gap: 15px;
+				flex-wrap: wrap;
+			}
+		}
+	}
+	.seo__block {
+		flex-direction: column;
+		&_reverse {
+			flex-direction: column-reverse;
+		}
+		&-description {
+			margin-left: $spacingDesktop;
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.heading {
+		font-size: 1.9rem;
+	}
+	.seo {
+		font-size: 1.3rem;
+	}
+	.benefits {
+		&__text {
+			margin-left: $spacingMobile;
+		}
+	}
+	.legalization {
+		padding: 90px $spacingMobile;
+		&__cards-container {
+			transform: translateY(0);
+		}
+		&__heading {
+			font-size: 2rem;
+		}
+		&__subheading {
+			font-size: 1.125rem;
+		}
+		&-navbar {
+			&__list {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			&__item:nth-child(2) {
+				margin: 0 0 10px;
+			}
+			&__item > svg {
+				display: none;
+			}
+		}
+	}
+	.card {
+		margin: 0 0 15px;
+	}
+	.pricing {
+		padding: 87px $spacingMobile 120px;
+	}
+	.consult {
+		padding-left: $spacingMobile;
+		&__form {
+			margin-right: $spacingMobile;
+		}
+		&__input-container {
+			flex-direction: column;
+		}
+		&__name-input {
+			margin-bottom: 10px;
+			margin-right: 0;
+		}
+		&__form-btn {
+			margin-bottom: $spacingMobile;
+		}
+		&__form-footer {
+			flex-direction: column;
+		}
+	}
+	.how-to-legalize {
+		&__image-container {
+			display: none;
+		}
+		&__content {
+			margin-left: $spacingMobile;
+			margin-top: 30px;
+		}
+	}
+	.achievements {
+		&__slider-container {
+			padding: 92px $spacingMobile 135px;
+		}
+	}
+	.reviews {
+		margin-left: $spacingMobile;
+	}
+	.team {
+		&__container {
+			margin: 0 $spacingMobile;
+		}
+	}
+	.seo__block {
+		flex-direction: column;
+		&_reverse {
+			flex-direction: column-reverse;
+			&-seo,
+			&-heading {
+				margin-left: $spacingMobile;
+			}
+		}
+		&-img {
+			margin: 0 $spacingMobile;
+		}
+		&-description {
+			margin: 0 $spacingMobile;
+		}
+	}
+	.faq {
+		&__container {
+			margin: 0 $spacingMobile;
+		}
+	}
+	.footer {
+		&__container {
+			flex-direction: column;
+			margin: 0 $spacingMobile;
+		}
+		&__legal {
+			margin: 0 $spacingMobile;
+		}
+	}
+}
+
+@media screen and (max-width: 545px) {
+	.achievements {
+		&__slider-container {
+			padding: 92px $spacingMobile 135px;
+			overflow: hidden;
+		}
+	}
+}
+
+@media screen and (max-width: 990px) {
+	.reviews {
+		padding-right: 0px;
+		&__controls {
+			right: 70%;
+			top: 100%;
+			// transform: translate(50%);
+			display: flex;
+		}
+		&__btn {
+			margin-bottom: 0;
+			margin-top: 10px;
+			margin-right: 10px;
+		}
+	}
+}

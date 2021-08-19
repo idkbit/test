@@ -1,0 +1,51 @@
+.reviews {
+	position: relative;
+	padding-right: 240px;
+	margin-bottom: 135px;
+	margin-left: $spacingDesktop;
+	&__subheading,
+	&__heading {
+		text-align: center;
+	}
+	&__subheading {
+		font-size: 1.5rem;
+		color: $clr-black-tertiary;
+	}
+	&__heading {
+		color: $clr-black-primary;
+		font-family: $font-oswald;
+		font-weight: 700;
+		font-size: 3.375rem;
+		margin-bottom: 33px;
+	}
+	&__slide {
+		border: 1px solid #c6c6c6;
+		border-radius: 2px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		padding: 55px 70px 50px 70px;
+		&-info {
+			display: flex;
+			margin-bottom: 33px;
+		}
+		&-img {
+			width: 66px;
+			height: 65px;
+			margin-right: 25px;
+		}
+		&-name {
+			font-weight: 700;
+			line-height: 1.5rem;
+		}
+		&-position {
+			font-size: 0.875rem;
+		}
+	}
+	&__controls {
+		position: absolute;
+		right: 96px;
+		top: 50%;
+	}
+	&__btn {
+		margin-bottom: 10px;
+	}
+}

@@ -1,0 +1,78 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	font-family: "Roboto", sans-serif;
+}
+
+//variables
+$clr-black-primary: #2b2a29;
+$clr-black-secondary: #444444;
+$clr-black-tertiary: #4e4e4e;
+$clr-red-primary: #b61a1f;
+$clr-white: #ffffff;
+
+$font-oswald: "Oswald", sans-serif;
+
+$spacingDesktop: 75px;
+$spacingMobile: 10px;
+
+.btn {
+	display: inline-block;
+	color: $clr-white;
+	background-color: $clr-red-primary;
+	border-radius: 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color 0.3s, transform 0.2s;
+	&:active {
+		transform: translateY(2px);
+		box-shadow: 3px 3px 5px $clr-black-primary;
+	}
+	&:hover {
+		background-color: lighten($color: $clr-red-primary, $amount: 10%);
+	}
+}
+
+.seo {
+	font-weight: 300;
+	font-size: 1.5rem;
+	line-height: 1.75rem;
+	color: $clr-black-tertiary;
+}
+
+.img {
+	width: 100%;
+	transform: translateY(-2px);
+}
+
+.controls-btn {
+	height: 45px;
+	width: 45px;
+	border-radius: 2px;
+	border: 3px solid transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&[disabled] {
+		background-color: #c2d1d9;
+		pointer-events: none;
+	}
+}
+
+@import "header";
+@import "legalization";
+@import "how-to-legalize";
+@import "benefits";
+@import "pricing";
+@import "consult";
+@import "achievements";
+@import "reviews";
+@import "seo__block";
+@import "team";
+@import "faq";
+@import "footer";
+@import "media";

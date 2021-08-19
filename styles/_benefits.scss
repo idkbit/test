@@ -1,0 +1,33 @@
+.benefits {
+	min-height: 417px;
+	background: url("../images/benefits.png") no-repeat;
+	background-size: cover;
+	color: $clr-white;
+	position: relative;
+	text-align: center;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		background-color: rgba(50, 50, 50, 0.7);
+	}
+	& > * {
+		position: relative;
+	}
+	&__heading {
+		font-family: $font-oswald;
+		padding-top: 94px;
+		margin-bottom: 20px;
+		font-size: 3.375rem;
+	}
+	&__text {
+		font-size: 1.125rem;
+		font-weight: 500;
+		margin: 0 auto;
+		max-width: 976px;
+		line-height: 1.625rem;
+	}
+}

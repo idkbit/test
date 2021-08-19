@@ -1,0 +1,84 @@
+.consult {
+	background: url("../images/consult.png") no-repeat;
+	&__footer {
+		background: url("../images//footerbg.png") no-repeat;
+		background-size: cover;
+	}
+	background-size: cover;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		background-color: rgba(50, 50, 50, 0.7);
+	}
+	& > * {
+		position: relative;
+		color: $clr-white;
+	}
+	&__heading {
+		font-size: 3.375rem;
+		text-align: center;
+		line-height: 5rem;
+		padding-top: 75px;
+	}
+	&__subheading {
+		text-align: center;
+		line-height: 1.5rem;
+		margin-bottom: 50px;
+	}
+	&__form {
+		max-width: 706px;
+		margin: 0 auto;
+		&-btn {
+			padding: 15px 50px;
+			border: 1px solid transparent;
+			margin-right: 20px;
+			cursor: pointer;
+		}
+		&-disclaimer {
+			font-size: 0.75rem;
+			line-height: 1.125rem;
+			flex: 2;
+		}
+		&-footer {
+			display: flex;
+			align-items: center;
+			padding-bottom: 82px;
+		}
+	}
+	&__name-input,
+	&__phone-input,
+	&__comment {
+		background-color: rgba(255, 255, 255, 0.2);
+		padding: 18px 16.8px 16px;
+		color: $clr-white;
+		font-size: 1.142rem;
+		border-radius: 10px;
+		border: 1px solid #b0b0b0;
+		&:focus {
+			outline: 1px solid transparent;
+			border: 1px solid white;
+		}
+		&::placeholder {
+			color: $clr-white;
+			font-size: 1.142rem;
+		}
+	}
+	&__input-container {
+		display: flex;
+		margin-bottom: 15px;
+	}
+	&__name-input {
+		flex: 2;
+		margin-right: 15px;
+	}
+	&__comment {
+		width: 100%;
+		resize: none;
+		margin-bottom: 17px;
+	}
+}

@@ -1,0 +1,65 @@
+.achievements {
+	position: relative;
+	&__controls {
+		display: flex;
+		position: absolute;
+		left: $spacingDesktop;
+		bottom: 190px;
+	}
+	&__slider-container {
+		overflow-x: hidden;
+		padding: 92px 96px 135px $spacingDesktop;
+	}
+	&__heading {
+		font-size: 3.375rem;
+		line-height: 5rem;
+		font-family: $font-oswald;
+		font-weight: 700;
+		margin-bottom: 17px;
+	}
+	&__text {
+		line-height: 1.5rem;
+		&:first-of-type {
+			margin-bottom: 15px;
+		}
+	}
+	&__slide {
+		display: none;
+		&_active {
+			display: flex;
+			flex-wrap: wrap;
+			animation: pop 0.5s forwards;
+		}
+		&-content {
+			flex-grow: 1;
+			flex-basis: 50%;
+		}
+		&-img {
+			flex-grow: 1;
+			flex-basis: 50%;
+			background: url("../images/sliderBackground.jpg") no-repeat bottom
+				right/contain;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			& > * {
+				max-width: 500px;
+				max-height: 588px;
+			}
+		}
+	}
+	&__btn {
+		&:first-of-type {
+			margin-right: 10px;
+		}
+	}
+}
+
+@keyframes pop {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,53 @@
+.footer {
+	border-top: 10px solid #414141;
+	background-color: $clr-black-primary;
+	color: $clr-white;
+	&__container {
+		margin: 0 $spacingDesktop;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: flex-start;
+		padding-bottom: 50px;
+	}
+	&__list {
+		list-style-type: none;
+		display: flex;
+		justify-content: space-between;
+	}
+	&__title {
+		margin-top: 45px;
+		margin-bottom: 15px;
+		color: #aaa;
+		font-weight: 500;
+		font-size: 1.125rem;
+	}
+	&__contacts-list {
+		list-style-type: none;
+		&-item {
+			margin-bottom: 10px;
+		}
+	}
+	&__address {
+		margin-bottom: 10px;
+		&-link {
+			color: $clr-white;
+			&:hover {
+				color: #aaa;
+			}
+		}
+	}
+	&__hours {
+		&-work {
+			margin-bottom: 10px;
+		}
+	}
+	&__legal {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px solid #aaa;
+		padding-top: 18px;
+		padding-bottom: 20px;
+		margin: 0 $spacingDesktop;
+	}
+}

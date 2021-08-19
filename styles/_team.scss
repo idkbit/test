@@ -1,0 +1,39 @@
+.team {
+	& > .seo,
+	&__heading {
+		text-align: center;
+	}
+	& > .seo {
+		margin-top: 110px;
+	}
+	&__heading {
+		font-family: $font-oswald;
+		font-weight: 700;
+		font-size: 3.375rem;
+		line-height: 5rem;
+		margin-bottom: 55px;
+	}
+	&__container {
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(4, 1fr);
+		margin: 0 $spacingDesktop;
+	}
+	&__card {
+		max-width: 282px;
+		border-radius: 2px;
+		border: 1px solid #c2d1d9;
+		&-description {
+			text-align: center;
+		}
+		&-name {
+			font-size: 1.125rem;
+			color: $clr-black-primary;
+			margin-bottom: 15px;
+		}
+		&-text {
+			font-size: 0.875rem;
+			color: $clr-black-tertiary;
+		}
+	}
+}

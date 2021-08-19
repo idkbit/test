@@ -1,0 +1,48 @@
+.pricing {
+	padding: 87px $spacingDesktop 120px;
+	text-align: center;
+	&__heading {
+		font-family: $font-oswald;
+		font-weight: 700;
+		font-size: 3.375rem;
+		line-height: 5rem;
+		margin-bottom: 25px;
+		color: $clr-black-primary;
+	}
+	&__subheading {
+		color: $clr-black-secondary;
+		max-width: 571px;
+		margin: 0 auto;
+	}
+	&__card {
+		border: 1px solid #c6c6c6;
+		border-radius: 2px;
+		overflow: hidden;
+		text-align: left;
+		&-container {
+			margin-top: 66px;
+			display: flex;
+			justify-content: space-between;
+		}
+		&-description {
+			margin: 25px 0 37px 44px;
+		}
+		&-title {
+			font-family: $font-oswald;
+			font-weight: 500;
+			font-size: 1.5rem;
+			margin-bottom: 24px;
+		}
+		&-divider {
+			width: 37px;
+			height: 2px;
+			background-color: $clr-black-primary;
+			margin-bottom: 37.5px;
+		}
+		&-price {
+			font-size: 1.9375rem;
+			color: $clr-red-primary;
+			font-weight: 700;
+		}
+	}
+}

@@ -1,0 +1,75 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	&__logo {
+		margin-left: $spacingDesktop;
+		margin-top: 28px;
+		flex-grow: 1;
+	}
+	&__container {
+		margin-right: $spacingDesktop;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex-grow: 2;
+	}
+	&__contacts {
+		margin-top: 26px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		margin-bottom: 15px;
+	}
+	&__phone-logo {
+		transform: translateY(2px);
+		margin-right: 12px;
+	}
+	&__phonenumber {
+		text-decoration: none;
+		font-size: 1.125rem;
+		color: $clr-black-primary;
+		cursor: pointer;
+		font-weight: 500;
+	}
+	&__divider {
+		height: 18px;
+		transform: rotate(15deg);
+		margin: 0 25px;
+		border-right: 1px solid $clr-black-primary;
+	}
+}
+
+.navbar {
+	&__list {
+		list-style-type: none;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 28px;
+	}
+	&__link {
+		text-decoration: none;
+		color: $clr-black-primary;
+		font-weight: 500;
+		line-height: 1.2;
+		border-bottom: 2px solid transparent;
+		&:hover {
+			border-bottom-color: $clr-black-primary;
+		}
+	}
+}
+
+.burger-menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+	&__line {
+		width: 28px;
+		height: 4px;
+		background-color: $clr-black-primary;
+	}
+	&__line:not(:last-of-type) {
+		margin-bottom: 5px;
+	}
+}
