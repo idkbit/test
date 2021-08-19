@@ -13,6 +13,9 @@ const swiper = new Swiper(".swiper-container", {
 			slidesPerView: 2,
 			spaceBetween: 30,
 		},
+		1660: {
+			slidesPerView: 3,
+		},
 	},
 
 	// Navigation arrows
