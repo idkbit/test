@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.wrapper {
+  @apply flex justify-center items-center bg-bgLighter min-h-screen text-white;
+}
