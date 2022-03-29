@@ -1,22 +1,23 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LoginForm, SiteList } from "./components";
-import { Site } from "./graphql/types";
+import { Header, LoginForm, SiteList } from "./components";
 
 function App() {
-  const [sites, setSites] = useState<Site[]>([]);
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(() =>
+    localStorage.getItem("accessToken")
+  );
 
   return (
     <div className="wrapper">
+      <Header isAuthorized={isAuthorized} />
       <BrowserRouter>
         <Routes>
           <Route
             path="/"
             element={
               <LoginForm
-                setSites={setSites}
                 setIsAuthorized={setIsAuthorized}
+                isAuthorized={isAuthorized}
               />
             }
           />

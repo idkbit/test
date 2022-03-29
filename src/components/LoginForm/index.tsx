@@ -2,14 +2,13 @@ import { useMutation } from "@apollo/client";
 import React, { FormEvent, ChangeEvent, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { LOG_IN, LOG_IN_DATA, LOG_IN_INPUT } from "../../graphql";
-import { Site } from "../../graphql/types";
 
 interface Props {
-  setSites: (sites: Site[]) => void;
-  setIsAuthorized: (authorized: boolean) => void;
+  setIsAuthorized: (authorized: string | null) => void;
+  isAuthorized: string | null;
 }
 
-export const LoginForm = ({ setIsAuthorized }: Props) => {
+export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,8 +17,13 @@ export const LoginForm = ({ setIsAuthorized }: Props) => {
     LOG_IN_INPUT
   >(LOG_IN, {
     onCompleted: (data) => {
-      localStorage.setItem("accessToken", data.users.login.token.accessToken);
-      setIsAuthorized(true);
+      const token = data.users.login.token.accessToken;
+      localStorage.setItem("accessToken", token);
+      setIsAuthorized(token);
+    },
+    onError: (error) => {
+      localStorage.removeItem("accessToken");
+      setIsAuthorized(null);
     },
   });
 
@@ -41,16 +45,24 @@ export const LoginForm = ({ setIsAuthorized }: Props) => {
     setPassword(e.target.value);
   };
 
+  if (isAuthorized) {
+    return <Navigate to="/sites" replace />;
+  }
+
   if (data) {
     return <Navigate to="/sites" replace />;
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="flex justify-between items-end">
-        <label htmlFor="email">email: </label>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 border-2 border-bgDark pt-4 w-1/2 mx-auto">
+      <div className="border-b-2 border-b-bgDark flex flex-col justify-between">
+        <label htmlFor="email" className="mx-4 mb-2">
+          email:{" "}
+        </label>
         <input
-          className="bg-input p-2 text-bgDark"
+          className="bg-input p-2 text-bgDark mx-4 mb-4"
           type="email"
           name="email"
           id="email"
@@ -59,10 +71,12 @@ export const LoginForm = ({ setIsAuthorized }: Props) => {
           onChange={handleEmailChange}
         />
       </div>
-      <div className="flex justify-between items-end">
-        <label htmlFor="pw">password: </label>
+      <div className="flex justify-between flex-col">
+        <label htmlFor="pw" className="mx-4 mb-2">
+          password:{" "}
+        </label>
         <input
-          className="bg-input p-2 text-bgDark"
+          className="bg-input p-2 text-bgDark mx-4"
           type="password"
           name="pw"
           id="pw"
@@ -72,7 +86,7 @@ export const LoginForm = ({ setIsAuthorized }: Props) => {
       </div>
       <button
         type="submit"
-        className="bg-bgDark active:translate-y-1 transition-all py-2">
+        className="bg-bgDark transition-all active:translate-y-1 py-2 hover:bg-input hover:text-bgDark">
         Log in
       </button>
     </form>

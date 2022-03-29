@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { FETCH_DATA, FETCH_SITES } from "../../graphql/queries";
 
 interface Props {
-  isAuthorized: boolean;
+  isAuthorized: string | null;
 }
 
 export const SiteList = ({ isAuthorized }: Props) => {
@@ -15,18 +15,20 @@ export const SiteList = ({ isAuthorized }: Props) => {
 
   if (data) {
     return (
-      <div className="flex gap-4">
-        {data.viewer.sites.map((site) => (
-          <a
-            className="border-2 border-red-200 p-2 transition-all hover:border-bgDark text-bg focus:border-bgDark focus:outline-none active:translate-y-1"
-            key={site.id}
-            href={`https://${site.host}`}
-            target="_blank"
-            rel="noopener noreferrer">
-            {site.host}
-          </a>
-        ))}
-      </div>
+      <>
+        <div className="flex gap-4">
+          {data.viewer.sites.map((site) => (
+            <a
+              className="border-2 border-red-200 p-2 transition-all hover:border-bgDark text-bg focus:border-bgDark focus:outline-none active:translate-y-1"
+              key={site.id}
+              href={`https://${site.host}`}
+              target="_blank"
+              rel="noopener noreferrer">
+              {site.host}
+            </a>
+          ))}
+        </div>
+      </>
     );
   }
 
