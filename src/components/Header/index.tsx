@@ -45,7 +45,9 @@ export const Header = ({
 
   return (
     <header className="px-10 py-4 border-b-2 border-b-slate-700 dark:border-b-slate-200 mb-10 flex justify-between items-baseline">
-      <h1 className="text-slate-700 dark:text-slate-200">Tsarka test</h1>
+      <h1 className="text-slate-700 dark:text-slate-200 text-xl font-bold">
+        Tsarka test
+      </h1>
       <div>
         <button
           onClick={() =>

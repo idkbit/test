@@ -22,8 +22,10 @@ function App() {
     return localStorage.getItem("theme") || "light";
   });
 
+  const className = theme === "dark" ? { className: "dark" } : "";
+
   return (
-    <div className={`${theme === "dark" ? "dark" : ""}`}>
+    <div {...className}>
       <div className="wrapper">
         <BrowserRouter>
           <Header
@@ -45,7 +47,13 @@ function App() {
             />
             <Route
               path="/sites"
-              element={<SiteList isAuthorized={isAuthorized.accessToken} />}
+              element={
+                <SiteList
+                  refreshToken={isAuthorized.refreshToken}
+                  isAuthorized={isAuthorized.accessToken}
+                  setIsAuthorized={setIsAuthorized}
+                />
+              }
             />
           </Routes>
         </BrowserRouter>

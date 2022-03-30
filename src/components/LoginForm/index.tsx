@@ -69,7 +69,7 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
           email:{" "}
         </label>
         <input
-          className="bg-white p-2 text-slate-700  mx-4 mb-4 placeholder:text-slate-400"
+          className="bg-white p-2 text-slate-700  mx-4 mb-4 placeholder:text-slate-400 border-2 border-transparent focus:border-blue-400 focus:outline-none"
           type="email"
           name="email"
           id="email"
@@ -90,7 +90,7 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
           password:{" "}
         </label>
         <input
-          className="bg-white p-2 text-slate-700 mx-4 placeholder:text-slate-400"
+          className="bg-white p-2 text-slate-700 mx-4 placeholder:text-slate-400 border-2 border-transparent focus:border-blue-400 focus:outline-none"
           type="password"
           name="pw"
           id="pw"
@@ -100,7 +100,7 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
       </div>
       <button
         type="submit"
-        className="bg-slate-700 text-slate-200 dark:bg-slate-200 dark:text-slate-700 transition-all active:translate-y-1 py-2 hover:bg-input hover:text-bgDark">
+        className="text-lg bg-slate-700 border-t-2 border-t-transparent text-slate-200 dark:bg-slate-200 dark:text-slate-700 transition-all active:bg-white py-2 hover:bg-slate-200 hover:text-slate-700 hover:border-t-slate-700 hover:dark:border-t-slate-200 hover:dark:bg-slate-700 hover:dark:text-slate-200">
         Log in
       </button>
     </form>
