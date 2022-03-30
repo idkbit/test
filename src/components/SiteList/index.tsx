@@ -41,6 +41,8 @@ export const SiteList = ({
       setIsAuthorized({ accessToken, refreshToken });
     },
     refetchQueries: [{ query: FETCH_SITES }],
+    fetchPolicy: "network-only",
+    notifyOnNetworkStatusChange: true,
   });
 
   if (loading) {
