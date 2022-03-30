@@ -7,31 +7,44 @@ function App() {
     accessToken: localStorage.getItem("accessToken") || "",
     refreshToken: localStorage.getItem("refreshToken") || "",
   }));
+  const [theme, setTheme] = useState(() => {
+    if (window.matchMedia("prefers-color-scheme: dark").matches) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+
+    return localStorage.getItem("theme") || "light";
+  });
 
   return (
-    <div className="wrapper">
-      <BrowserRouter>
-        <Header
-          refreshToken={isAuthorized.refreshToken}
-          isAuthorized={isAuthorized.accessToken}
-          setIsAuthorized={setIsAuthorized}
-        />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <LoginForm
-                setIsAuthorized={setIsAuthorized}
-                isAuthorized={isAuthorized.accessToken}
-              />
-            }
+    <div className={`${theme === "dark" ? "dark" : ""}`}>
+      <div className="wrapper">
+        <BrowserRouter>
+          <Header
+            refreshToken={isAuthorized.refreshToken}
+            isAuthorized={isAuthorized.accessToken}
+            currentTheme={theme}
+            setIsAuthorized={setIsAuthorized}
+            toggleTheme={setTheme}
           />
-          <Route
-            path="/sites"
-            element={<SiteList isAuthorized={isAuthorized.accessToken} />}
-          />
-        </Routes>
-      </BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <LoginForm
+                  setIsAuthorized={setIsAuthorized}
+                  isAuthorized={isAuthorized.accessToken}
+                />
+              }
+            />
+            <Route
+              path="/sites"
+              element={<SiteList isAuthorized={isAuthorized.accessToken} />}
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }

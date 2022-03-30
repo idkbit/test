@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
 import { LOG_OUT, LOG_OUT_DATA, LOG_OUT_INPUT } from "../../graphql";
 
 interface Props {
   isAuthorized: string;
   refreshToken: string;
+  currentTheme: string;
+  toggleTheme: (isDark: string) => void;
   setIsAuthorized: ({
     accessToken,
     refreshToken,
@@ -18,9 +19,10 @@ interface Props {
 export const Header = ({
   isAuthorized,
   refreshToken,
+  toggleTheme,
+  currentTheme,
   setIsAuthorized,
 }: Props) => {
-  const navigate = useNavigate();
   const [logout, { error }] = useMutation<LOG_OUT_DATA, LOG_OUT_INPUT>(
     LOG_OUT,
     {
@@ -37,16 +39,27 @@ export const Header = ({
     }
   );
 
+  useEffect(() => {
+    localStorage.setItem("theme", currentTheme);
+  }, [currentTheme]);
+
   return (
-    <header className="px-10 py-4 border-b-2 border-b-bgDark mb-10 flex justify-between items-baseline">
-      <h1>Tsarka test</h1>
-      {isAuthorized ? (
+    <header className="px-10 py-4 border-b-2 border-b-slate-700 dark:border-b-slate-200 mb-10 flex justify-between items-baseline">
+      <h1 className="text-slate-700 dark:text-slate-200">Tsarka test</h1>
+      <div>
         <button
-          onClick={() => logout()}
-          className="bg-bgDark border-2 border-transparent px-4 py-2 hover:bg-bgLighter hover:text-bgDark hover:border-bgDark">
-          Log out
+          onClick={() =>
+            toggleTheme(currentTheme === "dark" ? "light" : "dark")
+          }
+          className="button mr-4">
+          {currentTheme === "dark" ? "light" : "dark"} mode
         </button>
-      ) : null}
+        {isAuthorized ? (
+          <button onClick={() => logout()} className="button">
+            Log out
+          </button>
+        ) : null}
+      </div>
     </header>
   );
 };
