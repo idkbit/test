@@ -25,8 +25,14 @@ export const SiteList = ({
   refreshToken,
   setIsAuthorized,
 }: Props) => {
-  const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES);
-  const [refresh, { called }] = useMutation<
+  const { data, loading, refetch } = useQuery<FETCH_DATA>(FETCH_SITES, {
+    onError: async (err) => {
+      if (err.message === "INVALID_TOKEN" && refreshToken) {
+        await refresh();
+      }
+    },
+  });
+  const [refresh, { loading: refreshLoading }] = useMutation<
     REFRESH_TOKEN_DATA,
     REFRESH_TOKEN_INPUT
   >(REFRESH_TOKEN, {
@@ -37,21 +43,13 @@ export const SiteList = ({
       const { accessToken, refreshToken } = refetchedData.users.refresh;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
-
       setIsAuthorized({ accessToken, refreshToken });
+      refetch();
     },
-    refetchQueries: [{ query: FETCH_SITES }],
-    fetchPolicy: "network-only",
-    notifyOnNetworkStatusChange: true,
   });
 
-  if (loading) {
+  if (loading || refreshLoading) {
     return <div className="ml-10">Loading...</div>;
-  }
-
-  if (error && refreshToken && !called) {
-    refresh();
-    return null;
   }
 
   if (!isAuthorized && !refreshToken) {
