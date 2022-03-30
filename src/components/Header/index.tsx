@@ -6,9 +6,20 @@ import { LOG_OUT, LOG_OUT_DATA, LOG_OUT_INPUT } from "../../graphql";
 interface Props {
   isAuthorized: string;
   refreshToken: string;
+  setIsAuthorized: ({
+    accessToken,
+    refreshToken,
+  }: {
+    accessToken: string;
+    refreshToken: string;
+  }) => void;
 }
 
-export const Header = ({ isAuthorized, refreshToken }: Props) => {
+export const Header = ({
+  isAuthorized,
+  refreshToken,
+  setIsAuthorized,
+}: Props) => {
   const navigate = useNavigate();
   const [logout, { error }] = useMutation<LOG_OUT_DATA, LOG_OUT_INPUT>(
     LOG_OUT,
@@ -21,7 +32,7 @@ export const Header = ({ isAuthorized, refreshToken }: Props) => {
         console.log("good");
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
-        return navigate("/");
+        setIsAuthorized({ accessToken: "", refreshToken: "" });
       },
     }
   );

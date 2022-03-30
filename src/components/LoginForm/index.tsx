@@ -79,6 +79,13 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
         />
       </div>
       <div className="flex justify-between flex-col">
+        {email && !password ? (
+          <span className="mx-4 text-red-600">password is required</span>
+        ) : (
+          <span className="mx-4 invisible" aria-hidden="true">
+            just for space
+          </span>
+        )}
         <label htmlFor="pw" className="mx-4 mb-2">
           password:{" "}
         </label>

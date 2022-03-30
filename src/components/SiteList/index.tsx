@@ -9,7 +9,10 @@ interface Props {
 
 export const SiteList = ({ isAuthorized }: Props) => {
   const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES, {
-    onError: (error) => {},
+    onError: (error) => {
+      if (error.message === "INVALID_TOKEN") {
+      }
+    },
   });
   if (!isAuthorized) {
     return <Navigate to="/" replace />;

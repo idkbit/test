@@ -14,6 +14,7 @@ function App() {
         <Header
           refreshToken={isAuthorized.refreshToken}
           isAuthorized={isAuthorized.accessToken}
+          setIsAuthorized={setIsAuthorized}
         />
         <Routes>
           <Route
