@@ -23,7 +23,7 @@ export const Header = ({
   currentTheme,
   setIsAuthorized,
 }: Props) => {
-  const [logout, { error }] = useMutation<LOG_OUT_DATA, LOG_OUT_INPUT>(
+  const [logout, { client }] = useMutation<LOG_OUT_DATA, LOG_OUT_INPUT>(
     LOG_OUT,
     {
       variables: {
@@ -31,7 +31,6 @@ export const Header = ({
       },
       onError: (error) => console.log(error.message),
       onCompleted: () => {
-        console.log("good");
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
         setIsAuthorized({ accessToken: "", refreshToken: "" });
@@ -57,7 +56,9 @@ export const Header = ({
           {currentTheme === "dark" ? "light" : "dark"} mode
         </button>
         {isAuthorized ? (
-          <button onClick={() => logout()} className="button">
+          <button
+            onClick={() => logout({ onCompleted: () => {} })}
+            className="button">
             Log out
           </button>
         ) : null}

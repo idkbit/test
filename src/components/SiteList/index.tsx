@@ -25,9 +25,7 @@ export const SiteList = ({
   refreshToken,
   setIsAuthorized,
 }: Props) => {
-  const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES, {
-    onError: (err) => [console.log(err.message)],
-  });
+  const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES);
   const [refresh, { called, data: refetchedData }] = useMutation<
     REFRESH_TOKEN_DATA,
     REFRESH_TOKEN_INPUT
@@ -49,12 +47,9 @@ export const SiteList = ({
     return <div className="ml-10">Loading...</div>;
   }
 
-  if (called && !refetchedData) {
-    return <div className="ml-10">Reloading data...</div>;
-  }
-
-  if (error && !called) {
+  if (error && refreshToken && !called) {
     refresh();
+    return null;
   }
 
   if (!isAuthorized && !refreshToken) {

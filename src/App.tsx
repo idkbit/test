@@ -37,21 +37,21 @@ function App() {
           />
           <Routes>
             <Route
-              path="/"
-              element={
-                <LoginForm
-                  setIsAuthorized={setIsAuthorized}
-                  isAuthorized={isAuthorized.accessToken}
-                />
-              }
-            />
-            <Route
               path="/sites"
               element={
                 <SiteList
                   refreshToken={isAuthorized.refreshToken}
                   isAuthorized={isAuthorized.accessToken}
                   setIsAuthorized={setIsAuthorized}
+                />
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <LoginForm
+                  setIsAuthorized={setIsAuthorized}
+                  isAuthorized={isAuthorized.accessToken}
                 />
               }
             />
