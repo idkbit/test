@@ -8,6 +8,11 @@ function App() {
     refreshToken: localStorage.getItem("refreshToken") || "",
   }));
   const [theme, setTheme] = useState(() => {
+    const inLocalStorage = localStorage.getItem("theme");
+
+    if (inLocalStorage) {
+      return inLocalStorage;
+    }
     if (window.matchMedia("prefers-color-scheme: dark").matches) {
       localStorage.setItem("theme", "dark");
     } else {
