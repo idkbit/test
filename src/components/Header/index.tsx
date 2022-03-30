@@ -23,20 +23,17 @@ export const Header = ({
   currentTheme,
   setIsAuthorized,
 }: Props) => {
-  const [logout, { client }] = useMutation<LOG_OUT_DATA, LOG_OUT_INPUT>(
-    LOG_OUT,
-    {
-      variables: {
-        refreshToken,
-      },
-      onError: (error) => console.log(error.message),
-      onCompleted: () => {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        setIsAuthorized({ accessToken: "", refreshToken: "" });
-      },
-    }
-  );
+  const [logout] = useMutation<LOG_OUT_DATA, LOG_OUT_INPUT>(LOG_OUT, {
+    variables: {
+      refreshToken,
+    },
+    onError: (error) => console.log(error.message),
+    onCompleted: () => {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      setIsAuthorized({ accessToken: "", refreshToken: "" });
+    },
+  });
 
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);

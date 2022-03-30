@@ -26,7 +26,7 @@ export const SiteList = ({
   setIsAuthorized,
 }: Props) => {
   const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES);
-  const [refresh, { called, data: refetchedData }] = useMutation<
+  const [refresh, { called }] = useMutation<
     REFRESH_TOKEN_DATA,
     REFRESH_TOKEN_INPUT
   >(REFRESH_TOKEN, {
