@@ -17,10 +17,7 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [login, { loading, error, data }] = useMutation<
-    LOG_IN_DATA,
-    LOG_IN_INPUT
-  >(LOG_IN, {
+  const [login, { data }] = useMutation<LOG_IN_DATA, LOG_IN_INPUT>(LOG_IN, {
     onCompleted: (data) => {
       const { accessToken, refreshToken } = data.users.login.token;
       localStorage.setItem("accessToken", accessToken);
@@ -36,6 +33,7 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!email || !password) return;
     login({
       variables: {
         email,
