@@ -4,11 +4,13 @@ import { useQuery } from "@apollo/client";
 import { FETCH_DATA, FETCH_SITES } from "../../graphql/queries";
 
 interface Props {
-  isAuthorized: string | null;
+  isAuthorized: string;
 }
 
 export const SiteList = ({ isAuthorized }: Props) => {
-  const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES);
+  const { data, loading, error } = useQuery<FETCH_DATA>(FETCH_SITES, {
+    onError: (error) => {},
+  });
   if (!isAuthorized) {
     return <Navigate to="/" replace />;
   }

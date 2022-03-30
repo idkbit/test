@@ -1,11 +1,16 @@
 import { useMutation } from "@apollo/client";
-import React, { FormEvent, ChangeEvent, useState, useEffect } from "react";
+import React, { FormEvent, ChangeEvent, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { LOG_IN, LOG_IN_DATA, LOG_IN_INPUT } from "../../graphql";
 
+interface Args {
+  accessToken: string;
+  refreshToken: string;
+}
+
 interface Props {
-  setIsAuthorized: (authorized: string | null) => void;
-  isAuthorized: string | null;
+  setIsAuthorized: ({ accessToken, refreshToken }: Args) => void;
+  isAuthorized: string;
 }
 
 export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
@@ -17,13 +22,15 @@ export const LoginForm = ({ setIsAuthorized, isAuthorized }: Props) => {
     LOG_IN_INPUT
   >(LOG_IN, {
     onCompleted: (data) => {
-      const token = data.users.login.token.accessToken;
-      localStorage.setItem("accessToken", token);
-      setIsAuthorized(token);
+      const { accessToken, refreshToken } = data.users.login.token;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      setIsAuthorized({ accessToken, refreshToken });
     },
     onError: (error) => {
       localStorage.removeItem("accessToken");
-      setIsAuthorized(null);
+      localStorage.removeItem("refreshToken");
+      setIsAuthorized({ accessToken: "", refreshToken: "" });
     },
   });
 
