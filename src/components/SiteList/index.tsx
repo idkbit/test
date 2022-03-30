@@ -78,7 +78,7 @@ export const SiteList = ({
                 </td>
                 <td className="px-4">
                   <a
-                    className="visited:text-purple-600 text-slate-700 dark:text-white hover:text-blue-500 hover:dark:text-blue-500"
+                    className="visited:text-purple-600 font-semibold text-blue-600 dark:text-blue-300 hover:text-blue-900 hover:dark:text-blue-500"
                     href={`https://${site.host}`}
                     target="_blank"
                     rel="noopener noreferrer">
